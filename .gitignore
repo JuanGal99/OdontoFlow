@@ -166,3 +166,4 @@ uploads/
 
 # Logs
 *.log
+/lib/generated/prisma
