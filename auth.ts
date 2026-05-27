@@ -24,11 +24,20 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        const username = credentials.username.trim().toLowerCase();
+
         const user = await prisma.user.findUnique({
-          where: { username: credentials.username },
+          where: { username },
+          include: {
+            clinic: {
+              select: {
+                isActive: true,
+              },
+            },
+          },
         });
 
-        if (!user?.isActive) {
+        if (!user?.isActive || !user.clinic.isActive) {
           return null;
         }
 
@@ -54,6 +63,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     jwt({ token, user }) {
       if (user) {
+        token.userId = user.id ?? token.sub ?? "";
         token.clinicId = user.clinicId;
         token.role = user.role;
       }
@@ -62,8 +72,11 @@ export const authOptions: NextAuthOptions = {
     },
     session({ session, token }) {
       if (session.user) {
-        session.user.id = token.sub ?? "";
-        session.user.clinicId = token.clinicId;
+        session.user.id = token.userId ?? token.sub ?? "";
+        session.user.userId = token.userId ?? token.sub ?? "";
+        session.user.user_id = token.userId ?? token.sub ?? "";
+        session.user.clinicId = token.clinicId ?? "";
+        session.user.clinic_id = token.clinicId ?? "";
         session.user.role = token.role;
       }
 
