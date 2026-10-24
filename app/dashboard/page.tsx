@@ -70,7 +70,7 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="flex">
-        <AppSidebar />
+        <AppSidebar activeHref="/dashboard" />
         <div className="min-w-0 flex-1">
           <Topbar userName={session.user.name ?? session.user.userId} />
           <main className="mx-auto w-full max-w-7xl px-4 py-6 md:px-6 lg:px-8">

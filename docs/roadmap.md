@@ -8,18 +8,18 @@ Objetivo: construir una primera versión funcional enfocada en consultorios odon
 
 ## Autenticación
 
-- [ ] Registro de profesional.
-- [ ] Inicio de sesión.
-- [ ] Cierre de sesión.
-- [ ] Protección de rutas privadas.
+- [x] Registro de profesional.
+- [x] Inicio de sesión.
+- [x] Cierre de sesión.
+- [x] Protección de rutas privadas.
 
 ---
 
 ## Consultorio
 
-- [ ] Creación automática del consultorio al registrar el profesional.
+- [x] Creación automática del consultorio al registrar el profesional.
 - [ ] Edición básica del nombre del consultorio.
-- [ ] Separación de información por consultorio.
+- [x] Separación de información por consultorio en las operaciones implementadas (pacientes y citas).
 
 ---
 
@@ -45,38 +45,38 @@ Objetivo: construir una primera versión funcional enfocada en consultorios odon
 
 ## Pacientes
 
-- [ ] Crear paciente.
-- [ ] Editar paciente.
-- [ ] Consultar listado de pacientes.
-- [ ] Buscar pacientes.
-- [ ] Ver detalle del paciente.
+- [x] Crear paciente.
+- [x] Editar paciente.
+- [x] Consultar listado de pacientes.
+- [x] Buscar pacientes.
+- [x] Ver detalle del paciente.
 
 ---
 
 ## Citas
 
-- [ ] Crear cita.
-- [ ] Editar cita.
-- [ ] Cancelar cita.
-- [ ] Ver agenda del consultorio.
-- [ ] Marcar asistencia de cita.
+- [x] Crear cita.
+- [x] Editar cita.
+- [x] Cancelar cita.
+- [x] Ver agenda del consultorio.
+- [x] Marcar asistencia de cita.
 
 ### Estados de cita
 
-- [ ] Programada.
-- [ ] Cancelada.
-- [ ] Asistió.
-- [ ] No asistió.
+- [x] Programada.
+- [x] Cancelada.
+- [x] Asistió.
+- [x] No asistió.
 
 ---
 
 ## Tratamientos
 
-- [ ] Crear tratamiento.
-- [ ] Asociar tratamiento a paciente.
-- [ ] Actualizar estado del tratamiento.
-- [ ] Agregar observaciones simples.
-- [ ] Consultar historial de tratamientos del paciente.
+- [x] Crear tratamiento.
+- [x] Asociar tratamiento a paciente.
+- [x] Actualizar estado del tratamiento.
+- [x] Agregar observaciones simples.
+- [x] Consultar historial de tratamientos del paciente.
 
 ---
 

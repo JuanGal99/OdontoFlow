@@ -18,21 +18,20 @@ const navigationItems = [
     label: "Dashboard",
     href: "/dashboard",
     icon: LayoutDashboard,
-    active: true,
   },
   {
     label: "Pacientes",
-    href: "#patients",
+    href: "/patients",
     icon: UsersRound,
   },
   {
     label: "Agenda",
-    href: "#appointments",
+    href: "/appointments",
     icon: CalendarDays,
   },
   {
     label: "Tratamientos",
-    href: "#treatments",
+    href: "/treatments",
     icon: Stethoscope,
   },
   {
@@ -60,7 +59,11 @@ const adminItems = [
   },
 ];
 
-export function AppSidebar() {
+type AppSidebarProps = {
+  activeHref?: string;
+};
+
+export function AppSidebar({ activeHref = "/dashboard" }: AppSidebarProps) {
   return (
     <aside className="hidden min-h-screen w-64 shrink-0 border-r bg-muted/30 px-3 py-4 lg:flex lg:flex-col">
       <Link
@@ -79,8 +82,16 @@ export function AppSidebar() {
       </Link>
 
       <nav className="space-y-6">
-        <SidebarSection title="Principal" items={navigationItems} />
-        <SidebarSection title="Administracion" items={adminItems} />
+        <SidebarSection
+          activeHref={activeHref}
+          title="Principal"
+          items={navigationItems}
+        />
+        <SidebarSection
+          activeHref={activeHref}
+          title="Administracion"
+          items={adminItems}
+        />
       </nav>
 
       <div className="mt-auto rounded-md border bg-background p-3">
@@ -95,16 +106,16 @@ export function AppSidebar() {
 }
 
 type SidebarSectionProps = {
+  activeHref: string;
   title: string;
   items: Array<{
     label: string;
     href: string;
     icon: ComponentType<{ className?: string }>;
-    active?: boolean;
   }>;
 };
 
-function SidebarSection({ title, items }: SidebarSectionProps) {
+function SidebarSection({ activeHref, title, items }: SidebarSectionProps) {
   return (
     <div>
       <p className="px-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
@@ -117,7 +128,7 @@ function SidebarSection({ title, items }: SidebarSectionProps) {
             href={item.href}
             className={cn(
               "flex items-center gap-3 rounded-md px-2 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground",
-              item.active && "bg-background text-foreground shadow-sm",
+              item.href === activeHref && "bg-background text-foreground shadow-sm",
             )}
           >
             <item.icon className="size-4" />

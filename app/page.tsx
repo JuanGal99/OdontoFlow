@@ -67,7 +67,7 @@ export default function Home() {
               <ArrowRight className="size-4" />
             </Link>
             <Link
-              href="#foundation"
+              href="/#foundation"
               className="inline-flex items-center justify-center rounded-md border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-accent"
             >
               Explorar base UI
@@ -110,7 +110,7 @@ export default function Home() {
 
       <section
         id="foundation"
-        className="border-t bg-muted/20 px-4 py-14 sm:px-6"
+        className="scroll-mt-6 border-t bg-muted/20 px-4 py-14 sm:px-6"
       >
         <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
           {features.map((feature) => (

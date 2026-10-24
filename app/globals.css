@@ -82,4 +82,8 @@
   body {
     @apply bg-background text-foreground antialiased;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
