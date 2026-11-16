@@ -41,7 +41,7 @@ const navigationItems = [
   },
   {
     label: "Finanzas",
-    href: "#finances",
+    href: "/finances",
     icon: CreditCard,
   },
 ];
