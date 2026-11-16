@@ -74,9 +74,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token.userId ?? token.sub ?? "";
         session.user.userId = token.userId ?? token.sub ?? "";
-        session.user.user_id = token.userId ?? token.sub ?? "";
         session.user.clinicId = token.clinicId ?? "";
-        session.user.clinic_id = token.clinicId ?? "";
         session.user.role = token.role;
       }
 

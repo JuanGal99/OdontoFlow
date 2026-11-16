@@ -56,7 +56,7 @@ export function TreatmentsModule({ treatmentsResult, patientsResult }: Props) {
           <input className="h-9 rounded-md border bg-background px-2 text-sm" defaultValue={treatment.name} name="name" required />
           <input className="h-9 rounded-md border bg-background px-2 text-sm" defaultValue={treatment.tooth ?? ""} name="tooth" placeholder="Diente o zona" />
           <textarea className="min-h-20 rounded-md border bg-background px-2 py-2 text-sm md:col-span-2" defaultValue={treatment.notes ?? ""} name="notes" placeholder="Observaciones" />
-          <input name="description" type="hidden" value={treatment.description ?? ""} /><input name="startedAt" type="hidden" value={treatment.startedAt?.toISOString().slice(0, 10) ?? ""} /><input name="completedAt" type="hidden" value={treatment.completedAt?.toISOString().slice(0, 10) ?? ""} />
+          <input name="description" type="hidden" value={treatment.description ?? ""} /><input name="startedAt" type="hidden" value={treatment.startedAt ? new Date(treatment.startedAt).toISOString().slice(0, 10) : ""} /><input name="completedAt" type="hidden" value={treatment.completedAt ? new Date(treatment.completedAt).toISOString().slice(0, 10) : ""} />
           <button className="justify-self-end rounded-md border px-3 py-2 text-sm font-medium hover:bg-accent disabled:opacity-60" disabled={isPending} type="submit">Guardar</button>
         </form>))}
     </section>

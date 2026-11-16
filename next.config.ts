@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {};
-
-nextConfig.turbopack = {
-  root: process.cwd(),
+const nextConfig: NextConfig = {
+  turbopack: {
+    root: import.meta.dirname,
+  },
 };
 
 export default nextConfig;

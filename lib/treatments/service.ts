@@ -13,7 +13,20 @@ async function assertPatientBelongsToClinic(clinicId: string, patientId: string)
 export async function createTreatmentForClinic(clinicId: string, input: CreateTreatmentInput): Promise<TreatmentRecord> {
   const parsedInput = createTreatmentSchema.parse(input);
   await assertPatientBelongsToClinic(clinicId, parsedInput.patientId);
-  return prisma.treatment.create({ data: { clinicId, ...parsedInput }, select: treatmentSelect });
+  return prisma.treatment.create({
+    data: {
+      clinicId,
+      patientId: parsedInput.patientId,
+      name: parsedInput.name,
+      description: parsedInput.description,
+      tooth: parsedInput.tooth,
+      status: parsedInput.status,
+      startedAt: parsedInput.startedAt,
+      completedAt: parsedInput.completedAt,
+      notes: parsedInput.notes,
+    },
+    select: treatmentSelect,
+  });
 }
 
 export async function updateTreatmentForClinic(clinicId: string, input: UpdateTreatmentInput): Promise<TreatmentRecord> {

@@ -12,14 +12,14 @@ export default async function RegisterPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-neutral-50 px-4 py-10">
-      <section className="w-full max-w-md rounded-lg border border-neutral-200 bg-white p-6 shadow-sm">
+    <main className="flex min-h-screen items-center justify-center bg-muted/30 px-4 py-10">
+      <section className="w-full max-w-md rounded-lg border bg-card p-6 shadow-sm">
         <div className="mb-6 grid gap-2">
-          <p className="text-sm font-medium text-neutral-500">OdontoFlow</p>
-          <h1 className="text-2xl font-semibold text-neutral-950">
+          <p className="text-sm font-medium text-muted-foreground">OdontoFlow</p>
+          <h1 className="text-2xl font-semibold text-foreground">
             Crea tu consultorio
           </h1>
-          <p className="text-sm text-neutral-600">
+          <p className="text-sm text-muted-foreground">
             Registra tu usuario profesional y crearemos el consultorio
             automaticamente.
           </p>

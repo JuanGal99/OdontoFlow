@@ -5,7 +5,6 @@ import { useMemo, useState, useTransition } from "react";
 import {
   CalendarDays,
   Clock,
-  MapPin,
   Phone,
   Plus,
   Search,
@@ -49,7 +48,6 @@ type AppointmentView = {
   endTime: string;
   title: string;
   professional: string;
-  room: string;
   status: AppointmentStatusLabel;
   notes: string;
 };
@@ -131,7 +129,6 @@ function toAppointmentView(appointment: AppointmentRecord): AppointmentView {
     endTime: formatTimeValue(appointment.endAt),
     title: appointment.title,
     professional: appointment.creator.name ?? appointment.creator.username,
-    room: "Consultorio principal",
     status: toAppointmentStatusLabel(appointment.status),
     notes: appointment.notes ?? "Sin notas registradas.",
   };
@@ -193,7 +190,6 @@ export function AppointmentsModule({
             appointment.phone,
             appointment.title,
             appointment.professional,
-            appointment.room,
           ]
             .join(" ")
             .toLowerCase()
@@ -621,17 +617,17 @@ function NewAppointmentForm({
 
       <form action={onCreateAppointment} className="grid gap-4 p-5 md:grid-cols-2">
         {patientsError ? (
-          <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 md:col-span-2">
+          <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400 md:col-span-2">
             {patientsError}
           </p>
         ) : null}
         {error ? (
-          <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 md:col-span-2">
+          <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400 md:col-span-2">
             {error}
           </p>
         ) : null}
         {success ? (
-          <p className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700 md:col-span-2">
+          <p className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-400 md:col-span-2">
             {success}
           </p>
         ) : null}
@@ -676,7 +672,6 @@ function NewAppointmentForm({
               ))}
           </select>
         </label>
-        <FormField label="Consultorio" name="room" placeholder="Consultorio principal" />
         <label className="grid gap-2 text-sm font-medium md:col-span-2">
           Notas
           <textarea
@@ -795,7 +790,6 @@ function AppointmentDetailPanel({
             label="Profesional"
             value={appointment.professional}
           />
-          <DetailItem icon={MapPin} label="Consultorio" value={appointment.room} />
         </div>
 
         <div className="rounded-md border bg-muted/20 p-4">

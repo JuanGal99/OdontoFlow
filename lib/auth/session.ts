@@ -33,11 +33,7 @@ export async function getAuthenticatedSessionContext(): Promise<AuthenticatedSes
       clinicId,
       role,
       isActive: true,
-      clinic: {
-        is: {
-          isActive: true,
-        },
-      },
+      clinic: { isActive: true },
     },
     select: {
       id: true,
