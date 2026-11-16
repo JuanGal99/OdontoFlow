@@ -62,7 +62,7 @@ export function TreatmentsModule({ treatmentsResult, patientsResult }: Props) {
     </section>
     <form action={save} className="h-fit space-y-3 rounded-md border bg-card p-5">
       <div><h2 className="font-semibold">Nuevo tratamiento</h2><p className="mt-1 text-sm text-muted-foreground">Disponible para profesionales.</p></div>
-      {error ? <p className="text-sm text-red-700">{error}</p> : null}{success ? <p className="text-sm text-emerald-700">{success}</p> : null}
+      {error ? <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">{error}</p> : null}{success ? <p className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-400">{success}</p> : null}
       <select className="h-10 w-full rounded-md border bg-background px-2 text-sm" disabled={!patients.length} name="patientId" required><option value="">Selecciona un paciente</option>{patients.map((patient) => <option key={patient.id} value={patient.id}>{patient.firstName} {patient.lastName}</option>)}</select>
       <input className="h-10 w-full rounded-md border bg-background px-2 text-sm" name="name" placeholder="Nombre del tratamiento" required />
       <input className="h-10 w-full rounded-md border bg-background px-2 text-sm" name="tooth" placeholder="Diente o zona (opcional)" />

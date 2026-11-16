@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useMemo, useState, useTransition } from "react";
 import {
   ArrowDownCircle,
@@ -111,13 +112,6 @@ export function FinancesModule({ result }: FinancesModuleProps) {
     );
   }, [data, searchTerm]);
 
-  function refreshData() {
-    startTransition(async () => {
-      const res = await listFinancesAction();
-      if (res.ok) setData(res.data);
-    });
-  }
-
   function handleCreateIncome(formData: FormData) {
     setFormError("");
     setFormSuccess("");
@@ -134,7 +128,8 @@ export function FinancesModule({ result }: FinancesModuleProps) {
         return;
       }
       setFormSuccess("Ingreso registrado correctamente.");
-      refreshData();
+      const refreshed = await listFinancesAction();
+      if (refreshed.ok) setData(refreshed.data);
     });
   }
 
@@ -154,7 +149,8 @@ export function FinancesModule({ result }: FinancesModuleProps) {
         return;
       }
       setFormSuccess("Egreso registrado correctamente.");
-      refreshData();
+      const refreshed = await listFinancesAction();
+      if (refreshed.ok) setData(refreshed.data);
     });
   }
 
@@ -174,7 +170,8 @@ export function FinancesModule({ result }: FinancesModuleProps) {
         return;
       }
       setFormSuccess("Compra registrada correctamente.");
-      refreshData();
+      const refreshed = await listFinancesAction();
+      if (refreshed.ok) setData(refreshed.data);
     });
   }
 
@@ -307,7 +304,7 @@ export function FinancesModule({ result }: FinancesModuleProps) {
 type SummaryCardProps = {
   label: string;
   amount: number;
-  icon: React.ReactNode;
+  icon: ReactNode;
   tone: "success" | "danger" | "warning";
 };
 

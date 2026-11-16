@@ -81,16 +81,16 @@ const statusTone: Record<AppointmentStatusLabel, "default" | "success" | "warnin
     "No asistio": "default",
   };
 
-function formatDateInputValue(date: Date) {
-  return date.toISOString().slice(0, 10);
+function formatDateInputValue(date: Date | string) {
+  return new Date(date).toISOString().slice(0, 10);
 }
 
-function formatTimeValue(date: Date) {
+function formatTimeValue(date: Date | string) {
   return new Intl.DateTimeFormat("es-CO", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
-  }).format(date);
+  }).format(new Date(date));
 }
 
 function toAppointmentStatusLabel(
