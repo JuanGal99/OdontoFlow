@@ -8,9 +8,8 @@ import { listTreatmentsAction } from "@/lib/treatments/actions";
 import { getAuthenticatedSessionContext } from "@/lib/auth/session";
 
 export default async function ImagesPage() {
-  let context;
   try {
-    context = await getAuthenticatedSessionContext();
+    await getAuthenticatedSessionContext();
   } catch {
     redirect("/login");
   }

@@ -16,7 +16,7 @@ import { PageHeader } from "@/components/page-header";
 import { StatusBadge } from "@/components/status-badge";
 import { Topbar } from "@/components/topbar";
 import { getDashboardAction } from "@/lib/dashboard/actions";
-import type { DashboardData } from "@/lib/dashboard/queries";
+
 import { LogoutButton } from "./logout-button";
 
 const statusLabels: Record<string, string> = {

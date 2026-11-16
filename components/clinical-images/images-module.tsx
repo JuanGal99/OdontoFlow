@@ -1,11 +1,11 @@
 "use client";
 
-import type { ComponentType } from "react";
-import { useCallback, useMemo, useRef, useState, useTransition } from "react";
+import { useMemo, useRef, useState, useTransition } from "react";
+import Image from "next/image";
 import {
   Camera,
   FileImage,
-  Filter,
+
   Plus,
   Search,
   Trash2,
@@ -87,19 +87,6 @@ export function ImagesModule({ result, patients, treatments }: Props) {
         .includes(q),
     );
   }, [images, searchTerm]);
-
-  const refreshImages = useCallback(() => {
-    startTransition(async () => {
-      const res = await listImagesAction({
-        type: filterType as "imagen" | "radiografia" | undefined || undefined,
-        patientId: filterPatient || undefined,
-      });
-      if (res.ok) {
-        setImages(res.data.images);
-        setTotal(res.data.total);
-      }
-    });
-  }, [filterType, filterPatient]);
 
   function handleFilterChange(type: string, patient: string) {
     setFilterType(type);
@@ -272,6 +259,7 @@ export function ImagesModule({ result, patients, treatments }: Props) {
                     />
                   </label>
                   {uploadPreview && (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={uploadPreview}
                       alt="Preview"
@@ -442,10 +430,12 @@ export function ImagesModule({ result, patients, treatments }: Props) {
                 className="relative aspect-square cursor-pointer overflow-hidden bg-muted"
                 onClick={() => setPreviewImage(img)}
               >
-                <img
+                <Image
                   src={img.url}
                   alt={img.description ?? "Imagen clinica"}
-                  className="size-full object-cover transition-transform group-hover:scale-105"
+                  fill
+                  unoptimized
+                  className="object-cover transition-transform group-hover:scale-105"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/20 group-hover:opacity-100">
                   <ZoomIn className="size-6 text-white" />
@@ -514,6 +504,7 @@ export function ImagesModule({ result, patients, treatments }: Props) {
               </div>
             </div>
             <div className="flex justify-center bg-muted/30 p-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={previewImage.url}
                 alt={previewImage.description ?? "Imagen clinica"}
