@@ -36,7 +36,7 @@ const navigationItems = [
   },
   {
     label: "Imagenes",
-    href: "#images",
+    href: "/images",
     icon: FileImage,
   },
   {
