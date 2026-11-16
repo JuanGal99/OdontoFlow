@@ -49,7 +49,7 @@ const navigationItems = [
 const adminItems = [
   {
     label: "Equipo",
-    href: "#team",
+    href: "/team",
     icon: UserRound,
   },
   {
