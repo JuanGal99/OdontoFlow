@@ -54,7 +54,7 @@ const adminItems = [
   },
   {
     label: "Configuracion",
-    href: "#settings",
+    href: "/settings",
     icon: Settings,
   },
 ];
